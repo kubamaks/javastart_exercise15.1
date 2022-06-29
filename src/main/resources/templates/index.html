@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Zadaniownia</title>
+</head>
+<div layout:fragment="content">
+    <h2 th:text="${heading}">Do wykonania:</h2>
+    <table>
+        <thead>
+        <tr>
+            <td th:text="Zadanie">Zadanie</td>
+            <td th:text="Termin">Termin</td>
+            <td th:text="Utworzono">Utwrzono</td>
+            <td th:text="Wykonane">Wykonane</td>
+            <td th:if="${isDone}" th:text="Zakończono">Data wykonania</td>
+<!--            <td th:text="_" class="background">Edycja</td>-->
+        </tr>
+        </thead>
+        <tr th:each="t: ${taskList}">
+            <td th:text="${t.name}">tamat zadania</td>
+            <td th:class="centered">
+                <span th:if="${t.deadline} < ${compareDate}" th:text="${t.deadline}" th:class="overdue">Termin</span>
+                <span th:unless="${t.deadline} < ${compareDate}" th:text="${t.deadline}">Termin</span>
+            </td>
+            <td th:text="${t.creationDate}" th:class="centered">data utworzenia</td>
+            <td th:class="centered">
+                <span th:if="${t.done}">
+                <input type="checkbox" th:checked="${t.done}" disabled="disabled"/>
+                    <a th:href="|/zadanie/${t.id}/zmienstatus|">
+                        <button class="button-checked">ODZNACZ</button>
+                    </a>
+                </span>
+                <span th:unless="${t.done}">
+                <input type="checkbox" th:checked="${t.done}" disabled="disabled"/>
+                <a th:href="|/zadanie/${t.id}/zmienstatus|">
+                    <button class="button-checked">ZAZNACZ</button>
+                </a>
+                </span>
+            </td>
+            <td th:if="${isDone}" th:class="centered" th:text="${t.executionDate}">Data wykonania</td>
+            <td th:class="centered">
+                <a th:href="|/zadanie/${t.id}/edytuj|">
+                    <button class="button-edit">EDYTUJ</button>
+                </a>
+            </td>
+        </tr>
+    </table>
+</div>
+</html>
