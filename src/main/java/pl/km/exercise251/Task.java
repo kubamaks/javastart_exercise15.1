@@ -18,7 +18,7 @@ class Task {
     private LocalDate executionDate;
     @DateTimeFormat(pattern = ApplicationStatics.DATE_PATTERN)
     private LocalDate deadline;
-    boolean done;
+    private boolean done;
 
     public Long getId() {
         return id;

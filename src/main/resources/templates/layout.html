@@ -3,7 +3,7 @@
 <head th:fragment="head">
     <meta charset="UTF-8">
     <title>Layout title</title>
-    <link rel="stylesheet" href="../static/styles.css" th:href="@{styles.css}">
+    <link rel="stylesheet" href="../static/styles.css" th:href="@{/styles.css}">
 </head>
 <body>
 <div id="container" th:fragment="container">
@@ -16,14 +16,14 @@
                 JUST DO IT :)
             </div>
             <div id="links" th:id="links">
-                <a href="http://localhost:8080" class="button-header" th:class="button-header" th:href="@{/}">
+                <a href="/" class="button-header" th:class="button-header" th:href="@{/}">
                     <button class="button-header">LISTA <br/>ZADAŃ</button>
                 </a>
-                <a href="http://localhost:8080/archiwum" class="button-header" th:class="button-header"
+                <a href="/archiwum" class="button-header" th:class="button-header"
                    th:href="@{/archiwum}">
                     <button class="button-header">ARCHIWUM <br/>ZADAŃ</button>
                 </a>
-                <a href="http://localhost:8080/nowe" class="button-header" th:class="button-header"
+                <a href="/nowe" class="button-header" th:class="button-header"
                    th:href="@{/nowe}">
                     <button class="button-header">DODAJ NOWE <br/>ZADANIE</button>
                 </a>
@@ -36,7 +36,7 @@
         </div>
     </main>
     <footer id="footer" th:id="footer" th:fragment="footer">
-        last update: June 29th '22 by KUBAMAK
+        last update: June 30th '22 by KUBAMAK
     </footer>
 </div>
 </body>

@@ -5,7 +5,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -41,9 +40,9 @@ public class TaskController {
     }
 
     @GetMapping("/zadanie/{id}/zmienstatus")
-    public String changeStatus(@PathVariable Long id, Model model) {
+    public String changeStatus(@PathVariable Long id) {
         Task task = taskRepository.findById(id).orElseThrow();
-        if (task.done) {
+        if (task.isDone()) {
             task.setDone(false);
             task.setExecutionDate(null);
             taskRepository.save(task);
