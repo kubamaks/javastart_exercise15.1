@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Wpisz zadanie</title>
+</head>
+<div layout:fragment="content">
+    <h3 th:if="${task.id} == null">Nowe zadanie</h3>
+    <h3 th:unless="${task.id} == null">Edycja zadania</h3>
+    <form th:action="@{/zapisz}" method="post" th:object="${task}">
+        <label for="name" class="form-label fw-lighter">zadanie</label>
+        <input id="name" type="text" th:field="*{name}" class="form-control text-center"
+               placeholder="Zadanie">
+        <label for="deadline" >termin</label>
+        <input id="deadline" type="date" th:field="*{deadline}" class="form-control text-center"
+               placeholder="Termin wykonania">
+        <label th:unless="${task.id == null}" for="creationDate" >data utworzenia</label>
+        <input th:unless="${task.id == null}" id="creationDate" type="date" th:field="*{creationDate}"
+               placeholder="*{creationDate}">
+        <label th:unless="${task.id == null}" for="done">wykonano</label>
+        <input th:unless="${task.id == null}" id="done" type="checkbox" th:field="*{done}">
+        <label th:unless="${task.id == null}" for="executionDate">data wykonania</label>
+        <input th:unless="${task.id == null}" id="executionDate" type="date" th:field="*{executionDate}"
+               placeholder="*{executionDate}">
+        <input th:unless="${task.id == null}" id="id" type="hidden" th:field="*{id}"/>
+        <button class="form-button" type="submit" th:type="submit">Zapisz!</button>
+    </form>
+</div>
+</html>

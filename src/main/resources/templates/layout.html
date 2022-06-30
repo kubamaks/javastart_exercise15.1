@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <title>Layout title</title>
+    <link rel="stylesheet" href="../static/styles.css" th:href="@{/styles.css}">
+</head>
+<body>
+<div id="container" th:fragment="container">
+    <header th:fragment="header">
+        <div id="general_header" th:fragment="general_header">
+            <span>solution for exercise 25.1</span>
+        </div>
+        <div id="app_header" th:fragment="app_header">
+            <div id="logo" th:id="logo">
+                JUST DO IT :)
+            </div>
+            <div id="links" th:id="links">
+                <a href="/" class="button-header" th:class="button-header" th:href="@{/}">
+                    <button class="button-header">LISTA <br/>ZADAŃ</button>
+                </a>
+                <a href="/archiwum" class="button-header" th:class="button-header"
+                   th:href="@{/archiwum}">
+                    <button class="button-header">ARCHIWUM <br/>ZADAŃ</button>
+                </a>
+                <a href="/nowe" class="button-header" th:class="button-header"
+                   th:href="@{/nowe}">
+                    <button class="button-header">DODAJ NOWE <br/>ZADANIE</button>
+                </a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div id="middle" th:id="middle">
+            <div layout:fragment="content"></div>
+        </div>
+    </main>
+    <footer id="footer" th:id="footer" th:fragment="footer">
+        last update: June 30th '22 by KUBAMAK
+    </footer>
+</div>
+</body>
+</html>
